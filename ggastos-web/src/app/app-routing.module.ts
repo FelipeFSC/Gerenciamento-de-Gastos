@@ -5,6 +5,9 @@ import { Routes, RouterModule } from "@angular/router";
 
 import { AdminLayoutComponent } from "./layouts/admin-layout/admin-layout.component";
 import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
+import { UserService } from "./pages/user/user.service";
+import { AppConfigService } from "./app-config.service";
+import { ExtractDataService } from "./service/extract-data.service";
 
 const routes: Routes = [
   {
@@ -44,6 +47,11 @@ const routes: Routes = [
     RouterModule.forRoot(routes, {
       useHash: true
     })
+  ],
+  providers: [
+    AppConfigService,
+    UserService,
+    ExtractDataService
   ],
   exports: [RouterModule]
 })
