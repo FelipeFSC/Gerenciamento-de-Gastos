@@ -1,0 +1,13 @@
+
+
+npm config set legacy-peer-deps true
+
+npm install --save-dev @angular-devkit/build-angular
+
+
+
+// Iniciar o projeto
+ng serve
+
+// Feshar o projeto
+CTRL c
