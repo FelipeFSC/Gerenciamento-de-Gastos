@@ -47,7 +47,7 @@ public class ExpenseTypeController {
     }
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
+    @RequestMapping(value = "/{id}", method = RequestMethod.PUT, consumes = { "application/json" })
     public void update(@PathVariable("id") long id, @RequestBody ExpenseType expenseType) throws Exception {
         expenseTypeService.update(id, expenseType);
     }
