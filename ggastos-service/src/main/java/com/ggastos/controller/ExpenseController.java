@@ -2,8 +2,8 @@ package com.ggastos.controller;
 
 import java.util.List;
 
-import com.ggastos.model.Income;
-import com.ggastos.service.IncomeService;
+import com.ggastos.model.Expense;
+import com.ggastos.service.ExpenseService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -16,46 +16,46 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/incomes")
-public class IncomeController {
+@RequestMapping("/expenses")
+public class ExpenseController {
 
-    private IncomeService incomeService;
+    private ExpenseService expenseService;
 
     @Autowired
-    public IncomeController(IncomeService incomeService) {
-        this.incomeService = incomeService;
+    public ExpenseController(ExpenseService expenseService) {
+        this.expenseService = expenseService;
     }
 
     @ResponseBody
     @ResponseStatus(HttpStatus.OK)
     @RequestMapping(method = RequestMethod.GET, produces = { "application/json" })
-    public List<Income> listAll() throws Exception {
-        return incomeService.findAll();
+    public List<Expense> listAll() throws Exception {
+        return expenseService.findAll();
     }
 
     @ResponseBody
     @ResponseStatus(HttpStatus.OK)
     @RequestMapping(value = "/{id}", method = RequestMethod.GET, produces = { "application/json" })
-    public Income findOne(@PathVariable("id") long id) throws Exception {
-        return incomeService.findById(id);
+    public Expense findOne(@PathVariable("id") long id) throws Exception {
+        return expenseService.findById(id);
     }
 
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(method = RequestMethod.POST, consumes = { "application/json" }, produces = { "application/json" })
-    public void create(@RequestBody Income Income) {
-        incomeService.create(Income);
+    public void create(@RequestBody Expense Expense) {
+        expenseService.create(Expense);
     }
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT, consumes = { "application/json" })
-    public void update(@PathVariable("id") long id, @RequestBody Income Income) throws Exception {
-        incomeService.update(id, Income);
+    public void update(@PathVariable("id") long id, @RequestBody Expense Expense) throws Exception {
+        expenseService.update(id, Expense);
     }
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public void delete(@PathVariable("id") long id) throws Exception {
-        incomeService.delete(id);
+        expenseService.delete(id);
     }
 
 }

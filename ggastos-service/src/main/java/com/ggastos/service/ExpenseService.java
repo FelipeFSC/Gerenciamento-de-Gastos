@@ -52,7 +52,7 @@ public class ExpenseService {
         return e.get();
     }
 
-    public void deleteById(Long id) {
+    public void delete(Long id) {
 
         expenseRepository.deleteById(id);
     }
