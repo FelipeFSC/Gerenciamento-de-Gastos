@@ -26,15 +26,14 @@ public class PersonService {
         return personRepository.save(person);
     }
     
-    //ANALISAR
-    public Person update(Long id, Person person) {
+    public void update(Long id, Person person) {
 
         Person p = personRepository.findById(id).get();
         p.setNome(person.getNome());
         p.setExpenses(person.getExpenses());
         p.setIncomes(person.getIncomes());
 
-        return personRepository.save(p);
+        personRepository.save(p);
     }
 
     public List<Person> findAll() {
@@ -42,9 +41,15 @@ public class PersonService {
         return personRepository.findAll();
     }
 
-    public Optional<Person> findById(Long id) {
-
-        return personRepository.findById(id);
+    public Person findById(Long id) throws Exception {
+        
+        Optional<Person> p = personRepository.findById(id);
+        if (p == null || !p.isPresent()) {
+            
+            throw new Exception("Pessoa não encontrada.");
+        }
+        
+        return p.get();
     }
 
     public void deleteById(Long id) {
