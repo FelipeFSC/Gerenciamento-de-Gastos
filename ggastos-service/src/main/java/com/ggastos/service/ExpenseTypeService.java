@@ -19,7 +19,7 @@ public class ExpenseTypeService {
         this.expenseTypeRepository = expenseTypeRepository;
     }
 
-    public ExpenseType findOne(long id) throws Exception {
+    public ExpenseType findById(long id) throws Exception {
         Optional<ExpenseType> expenseType = expenseTypeRepository.findById(id);
         if (expenseType == null || !expenseType.isPresent()) {
             throw new Exception("Id não encontrado no banco!");
@@ -36,13 +36,13 @@ public class ExpenseTypeService {
     }
 
     public void update(long id, ExpenseType ex) throws Exception {
-        ExpenseType expenseType = findOne(id);
+        ExpenseType expenseType = findById(id);
         expenseType.setName(ex.getName());
         expenseTypeRepository.save(expenseType);
     }
 
     public void delete(long id) throws Exception {
-        ExpenseType expenseType = findOne(id);
+        ExpenseType expenseType = findById(id);
         expenseTypeRepository.delete(expenseType);
     }
 

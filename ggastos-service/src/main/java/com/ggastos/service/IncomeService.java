@@ -52,8 +52,7 @@ public class IncomeService {
         return i.get();
     }
 
-    public void deleteById(Long id) {
-
+    public void delete(Long id) {
         incomeRepository.deleteById(id);
     }
 }
