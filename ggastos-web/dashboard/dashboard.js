@@ -3,7 +3,7 @@
 (function () {
   'use strict'
 
-  feather.replace({ 'aria-hidden': 'true' })
+  feather.replace()
 
   // Graphs
   var ctx = document.getElementById('myChart')
