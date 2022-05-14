@@ -13,6 +13,9 @@ import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 
 import { AppRoutingModule } from "./app-routing.module";
 import { ComponentsModule } from "./components/components.module";
+import { AppConfigService } from "./app-config.service";
+import { HttpService } from "./service/http.service";
+import { ExtractDataService } from "./service/extract-data.service";
 
 @NgModule({
   imports: [
@@ -26,7 +29,11 @@ import { ComponentsModule } from "./components/components.module";
     ToastrModule.forRoot()
   ],
   declarations: [AppComponent, AdminLayoutComponent, AuthLayoutComponent],
-  providers: [],
+  providers: [
+    AppConfigService,
+    HttpService,
+    ExtractDataService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
