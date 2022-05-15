@@ -7,6 +7,7 @@ import com.ggastos.service.IncomeService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,7 +26,8 @@ public class IncomeController {
     public IncomeController(IncomeService incomeService) {
         this.incomeService = incomeService;
     }
-
+    
+    @CrossOrigin
     @ResponseBody
     @ResponseStatus(HttpStatus.OK)
     @RequestMapping(method = RequestMethod.GET, produces = { "application/json" })
@@ -39,7 +41,8 @@ public class IncomeController {
     public Income findOne(@PathVariable("id") long id) throws Exception {
         return incomeService.findById(id);
     }
-
+    
+    @CrossOrigin 
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(method = RequestMethod.POST, consumes = { "application/json" }, produces = { "application/json" })
     public void create(@RequestBody Income Income) {
