@@ -4,9 +4,9 @@ import java.util.List;
 
 import com.ggastos.model.Expense;
 import com.ggastos.service.ExpenseService;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/expenses")
+@CrossOrigin(origins = "*")
 public class ExpenseController {
 
     private ExpenseService expenseService;
@@ -25,7 +26,7 @@ public class ExpenseController {
     public ExpenseController(ExpenseService expenseService) {
         this.expenseService = expenseService;
     }
-
+ 
     @ResponseBody
     @ResponseStatus(HttpStatus.OK)
     @RequestMapping(method = RequestMethod.GET, produces = { "application/json" })
@@ -50,7 +51,7 @@ public class ExpenseController {
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT, consumes = { "application/json" })
     public void update(@PathVariable("id") long id, @RequestBody Expense Expense) throws Exception {
         expenseService.update(id, Expense);
-    }
+    } 
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)

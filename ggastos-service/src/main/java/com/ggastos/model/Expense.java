@@ -1,5 +1,6 @@
 package com.ggastos.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -7,7 +8,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -28,8 +28,9 @@ public class Expense {
     private Float value;
 
     private boolean fixed;
-
-    @ManyToOne
+    
+    //https://pt.stackoverflow.com/questions/361099/jpa-object-references-an-unsaved-transient-instance-save-the-transient-instanc
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "expense_type_id")
     private ExpenseType type;
 
